@@ -48,6 +48,22 @@ describe("Thermostat", function() {
     expect(thermostat.currentTemperature).toEqual(25)
   })
 
+  it("has power saving mode as the default", function() {
+    expect(thermostat.isPowerSaving()).toEqual(true)
+  })
+
+  it("can switch power saving mode off", function() {
+    thermostat.switchOffPowerSaving()
+    expect(thermostat.isPowerSaving()).toEqual(false)
+  })
+
+  it("can switch power saving mode back on", function() {
+    thermostat.switchOffPowerSaving()
+    thermostat.switchOnPowerSaving()
+    expect(thermostat.isPowerSaving()).toEqual(true)
+
+  })
+
 })
 
 
