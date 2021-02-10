@@ -11,4 +11,14 @@ describe("Thermostat", function() {
     expect(thermostat._currentTemperature).toEqual(20)
   });
 
+  it("allows user to increase the temperature", function () {
+    thermostat.increaseTemperature()
+    expect(thermostat._currentTemperature).toEqual(21)
+  })
+
+  it("allows user to decrease the temperature", function() {
+    thermostat.decreaseTemperature()
+    expect(thermostat._currentTemperature).toEqual(19)
+  })
+
 })
