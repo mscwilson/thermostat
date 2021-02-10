@@ -5,6 +5,7 @@ class Thermostat {
     this.DEFAULT_TEMPERATURE = 20
     this.MINIMUM_TEMPERATURE = 10
     this.MAXIMUM_TEMPERATURE_PS = 25
+    this.MAXIMUM_TEMPERATURE_NPS = 32
     this.powerSavingMode = true
     this._currentTemperature = this.DEFAULT_TEMPERATURE
   }
@@ -14,10 +15,18 @@ class Thermostat {
   }
 
   increaseTemperature() {
-    if (this._currentTemperature < this.MAXIMUM_TEMPERATURE_PS) {
+    if (this.isPowerSaving() === true) {
+      if (this._currentTemperature < this.MAXIMUM_TEMPERATURE_PS) {
+      this._currentTemperature += 1
+      }
+    }
+    else {
+      if (this._currentTemperature < this.MAXIMUM_TEMPERATURE_NPS) {
       this._currentTemperature += 1
     }
+    }
   }
+
 
   decreaseTemperature() {
     if (this._currentTemperature > this.MINIMUM_TEMPERATURE) {
