@@ -25,4 +25,14 @@ describe("Thermostat", function() {
     expect(thermostat.minimumTemperature).toEqual(10)
   })
 
+  it("cannot go below 10 degrees", function() {
+    for (let i = 0; i < 10; i++){
+      thermostat.decreaseTemperature();
+    } 
+    expect(function() { thermostat.decreaseTemperature(); }).toThrowError("cannot go below 10 degrees");
+  })
+
 })
+
+
+
