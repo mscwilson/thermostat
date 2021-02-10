@@ -26,10 +26,26 @@ describe("Thermostat", function() {
   })
 
   it("cannot go below 10 degrees", function() {
-    for (let i = 0; i < 10; i++){
+    for (let i = 0; i < 11; i++){
       thermostat.decreaseTemperature();
-    } 
-    expect(function() { thermostat.decreaseTemperature(); }).toThrowError("cannot go below 10 degrees");
+    }
+    expect(thermostat._currentTemperature).toEqual(10)
+  })
+
+  // it("alerts if minimum temp is reached", function () {
+  //   for (let i = 0; i < 11; i++){
+  //     thermostat.decreaseTemperature();
+  //   }
+  //   spyOn(window, "alert");
+  //   expect(window.alert).toHaveBeenCalledWith()
+  //   })
+
+
+  it("cannot go above 25 in default PS mode", function() {
+    for (let i = 0; i < 6; i++) {
+      thermostat.increaseTemperature();
+    }
+    expect(thermostat.currentTemperature).toEqual(25)
   })
 
 })

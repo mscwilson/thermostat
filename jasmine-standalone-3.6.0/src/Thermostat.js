@@ -11,14 +11,18 @@ class Thermostat {
   }
 
   increaseTemperature() {
-    this._currentTemperature += 1
+    if (this._currentTemperature < 25) {
+      this._currentTemperature += 1
+    }
   }
 
   decreaseTemperature() {
-    if(this._currentTemperature === 10) {
-      throw new Error("cannot go below 10 degrees");
-      }
+    if (this._currentTemperature > 10) {
     this._currentTemperature -= 1
+    }
+    // else {
+    // alert("Minimum temperature reached")
+    // }
   }
 }
 
