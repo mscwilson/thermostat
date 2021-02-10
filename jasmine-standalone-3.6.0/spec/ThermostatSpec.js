@@ -22,7 +22,7 @@ describe("Thermostat", function() {
   })
 
   it("has a minimum temperature of 10", function() {
-    expect(thermostat.minimumTemperature).toEqual(10)
+    expect(thermostat.MINIMUM_TEMPERATURE).toEqual(10)
   })
 
   it("cannot go below 10 degrees", function() {
