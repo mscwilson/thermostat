@@ -21,4 +21,8 @@ describe("Thermostat", function() {
     expect(thermostat._currentTemperature).toEqual(19)
   })
 
+  it("has a minimum temperature of 10", function() {
+    expect(thermostat.minimumTemperature).toEqual(10)
+  })
+
 })

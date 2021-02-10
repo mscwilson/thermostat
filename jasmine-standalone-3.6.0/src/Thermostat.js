@@ -3,6 +3,7 @@
 class Thermostat {
   constructor() {
     this._currentTemperature = 20
+    this.minimumTemperature = 10
   }
 
 
