@@ -32,15 +32,6 @@ describe("Thermostat", function() {
     expect(thermostat._currentTemperature).toEqual(10)
   })
 
-  // it("alerts if minimum temp is reached", function () {
-  //   for (let i = 0; i < 11; i++){
-  //     thermostat.decreaseTemperature();
-  //   }
-  //   spyOn(window, "alert");
-  //   expect(window.alert).toHaveBeenCalledWith()
-  //   })
-
-
   it("cannot go above 25 in default PS mode", function() {
     for (let i = 0; i < 6; i++) {
       thermostat.increaseTemperature();
@@ -48,29 +39,33 @@ describe("Thermostat", function() {
     expect(thermostat.currentTemperature).toEqual(25)
   })
 
-  it("has power saving mode as the default", function() {
-    expect(thermostat.isPowerSaving()).toEqual(true)
+  describe("has power saving mode which", function() {
+
+    it("is default", function() {
+      expect(thermostat.isPowerSaving()).toEqual(true)
+    })
+
+    it("can be switched off", function() {
+      thermostat.switchOffPowerSaving()
+      expect(thermostat.isPowerSaving()).toEqual(false)
+    })
+
+    it("can be switched back on", function() {
+      thermostat.switchOffPowerSaving()
+      thermostat.switchOnPowerSaving()
+      expect(thermostat.isPowerSaving()).toEqual(true)
+    })
+
+    it("allows max temp 32 when turned off", function() {
+      thermostat.switchOffPowerSaving()
+      for ( let i = 0; i < 13; i++) {
+        thermostat.increaseTemperature();
+      }
+      expect(thermostat.currentTemperature).toEqual(32)
+    })
   })
 
-  it("can switch power saving mode off", function() {
-    thermostat.switchOffPowerSaving()
-    expect(thermostat.isPowerSaving()).toEqual(false)
-  })
 
-  it("can switch power saving mode back on", function() {
-    thermostat.switchOffPowerSaving()
-    thermostat.switchOnPowerSaving()
-    expect(thermostat.isPowerSaving()).toEqual(true)
-
-  })
-
-  it("has max temp 32 when power saving is off", function() {
-    thermostat.switchOffPowerSaving()
-    for ( let i = 0; i < 13; i++) {
-      thermostat.increaseTemperature();
-    }
-    expect(thermostat.currentTemperature).toEqual(32)
-  })
 
 })
 

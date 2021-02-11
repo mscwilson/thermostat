@@ -6,6 +6,7 @@ class Thermostat {
     this.MINIMUM_TEMPERATURE = 10
     this.MAXIMUM_TEMPERATURE_PS = 25
     this.MAXIMUM_TEMPERATURE_NPS = 32
+
     this.powerSavingMode = true
     this._currentTemperature = this.DEFAULT_TEMPERATURE
   }
@@ -23,7 +24,7 @@ class Thermostat {
     else {
       if (this._currentTemperature < this.MAXIMUM_TEMPERATURE_NPS) {
       this._currentTemperature += 1
-    }
+      }
     }
   }
 
@@ -32,9 +33,6 @@ class Thermostat {
     if (this._currentTemperature > this.MINIMUM_TEMPERATURE) {
     this._currentTemperature -= 1
     }
-    // else {
-    // alert("Minimum temperature reached")
-    // }
   }
 
   isPowerSaving() {
