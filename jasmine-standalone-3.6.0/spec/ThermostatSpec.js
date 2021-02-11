@@ -21,6 +21,27 @@ describe("Thermostat", function() {
     expect(thermostat._currentTemperature).toEqual(19)
   })
 
+  it("can be reset to 20", function() {
+    thermostat.reset()
+    expect(thermostat.currentTemperature).toEqual(20)
+  })
+
+  describe("knows about energy usage", function(){
+
+    it("which is medium by default", function(){
+      expect(thermostat.energyUsage()).toEqual("medium")
+    })
+
+    it("which is low if temp is less than 18 deg", function(){
+      for ( let i = 0; i < 5; i++ ) {
+        thermostat.decreaseTemperature()
+      }
+      expect(thermostat.energyUsage()).toEqual("low")
+    })
+
+    xit("high")
+  })
+
   describe("has a minimum temperature", function () {
 
     it("of 10 degrees", function() {

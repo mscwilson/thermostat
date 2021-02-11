@@ -20,8 +20,11 @@ class Thermostat {
       this._currentTemperature += 1
       }
     return;
-    }
+  }
 
+  reset() {
+    this._currentTemperature = this.DEFAULT_TEMPERATURE
+  }
 
   decreaseTemperature() {
     if (this.isMinimumTemperature()) {
@@ -52,6 +55,17 @@ class Thermostat {
   switchOnPowerSaving(){
     return this.powerSavingMode = true
   }
+
+  energyUsage() {
+    if (this.currentTemperature < 18) {
+      return "low"
+    }
+    else if (this.currentTemperature <= 25) {
+      return "medium"
+    }
+    return "high"
+  }
+
 }
 
 
