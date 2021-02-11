@@ -48,6 +48,14 @@ class Thermostat {
     return this.powerSavingMode
   }
 
+  powerSavingSwitch() {
+    if (this.powerSavingMode === false){
+      this.switchOnPowerSaving()
+    } else {
+      this.switchOffPowerSaving()
+    }
+  }
+
   switchOffPowerSaving(){
     return this.powerSavingMode = false
   }
@@ -67,5 +75,3 @@ class Thermostat {
   }
 
 }
-
-
