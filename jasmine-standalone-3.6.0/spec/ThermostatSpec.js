@@ -21,23 +21,32 @@ describe("Thermostat", function() {
     expect(thermostat._currentTemperature).toEqual(19)
   })
 
-  it("has a minimum temperature of 10", function() {
-    expect(thermostat.MINIMUM_TEMPERATURE).toEqual(10)
+  describe("has a minimum temperature", function () {
+
+    it("of 10 degrees", function() {
+      expect(thermostat.MINIMUM_TEMPERATURE).toEqual(10)
+    })
+
+    it("and cannot go below 10 degrees", function() {
+      for (let i = 0; i < 11; i++){
+        thermostat.decreaseTemperature();
+      }
+      expect(thermostat._currentTemperature).toEqual(10)
+    })
+
+    it("which is false initially", function() {
+      expect(thermostat.isMinimumTemperature()).toBe(false)
+    })
+
+    it("which is true if it's at 10 degrees", function() {
+      for (let i = 0; i < 11; i++){
+        thermostat.decreaseTemperature();
+      }
+      expect(thermostat.isMinimumTemperature()).toBe(true)
+    })
   })
 
-  it("cannot go below 10 degrees", function() {
-    for (let i = 0; i < 11; i++){
-      thermostat.decreaseTemperature();
-    }
-    expect(thermostat._currentTemperature).toEqual(10)
-  })
 
-  it("cannot go above 25 in default PS mode", function() {
-    for (let i = 0; i < 6; i++) {
-      thermostat.increaseTemperature();
-    }
-    expect(thermostat.currentTemperature).toEqual(25)
-  })
 
   describe("has power saving mode which", function() {
 
@@ -56,13 +65,37 @@ describe("Thermostat", function() {
       expect(thermostat.isPowerSaving()).toEqual(true)
     })
 
-    it("allows max temp 32 when turned off", function() {
+
+  })
+
+  describe("has a maximum temperature", function () {
+
+    it("which is false initially", function(){
+      expect(thermostat.isMaximumTemperature()).toBe(false)
+    })
+
+    it("which is true after many increase temp calls", function() {
+      for ( let i = 0; i < 20; i++ ) {
+        thermostat.increaseTemperature();
+      }
+      expect(thermostat.isMaximumTemperature()).toBe(true)
+    })
+
+    it("of 25 in default PS mode", function() {
+      for ( let i = 0; i < 6; i++ ) {
+      thermostat.increaseTemperature();
+      }
+    expect(thermostat.currentTemperature).toEqual(25)
+    })
+
+    it("of 32 when PS mode is turned off", function() {
       thermostat.switchOffPowerSaving()
-      for ( let i = 0; i < 13; i++) {
+      for ( let i = 0; i < 13; i++ ) {
         thermostat.increaseTemperature();
       }
       expect(thermostat.currentTemperature).toEqual(32)
     })
+
   })
 
 

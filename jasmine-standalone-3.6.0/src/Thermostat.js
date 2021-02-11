@@ -16,23 +16,29 @@ class Thermostat {
   }
 
   increaseTemperature() {
-    if (this.isPowerSaving() === true) {
-      if (this._currentTemperature < this.MAXIMUM_TEMPERATURE_PS) {
+    if (this.isMaximumTemperature() === false) {
       this._currentTemperature += 1
       }
+    return;
     }
-    else {
-      if (this._currentTemperature < this.MAXIMUM_TEMPERATURE_NPS) {
-      this._currentTemperature += 1
-      }
-    }
-  }
 
 
   decreaseTemperature() {
-    if (this._currentTemperature > this.MINIMUM_TEMPERATURE) {
-    this._currentTemperature -= 1
+    if (this.isMinimumTemperature()) {
+      return;
     }
+    this._currentTemperature -= 1
+  }
+
+  isMinimumTemperature() {
+    return this._currentTemperature === this.MINIMUM_TEMPERATURE
+  }
+
+  isMaximumTemperature() {
+    if (this.isPowerSaving() === true) {
+      return this._currentTemperature === this.MAXIMUM_TEMPERATURE_PS;
+    }
+    return this._currentTemperature === this.MAXIMUM_TEMPERATURE_NPS
   }
 
   isPowerSaving() {
