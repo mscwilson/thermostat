@@ -19,6 +19,12 @@ $(document).ready( () => {
       updateTemperature();
     })
 
+    $('#select-city').submit( () => {
+      event.preventDefault();
+      let city = $('#city').val();
+      updateCity(city);
+    })
+
     $('#power_save').click( () => {
       thermostat.powerSavingSwitch();
       if(thermostat.isPowerSaving() === true){
@@ -29,11 +35,14 @@ $(document).ready( () => {
       updateTemperature()
     })
 
-    $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric', function(data) {
-      $("#outside-temperature").text(Math.round(data.main.temp));
-    })
-
-
+    function updateCity(city) {
+      let url = 'http://api.openweathermap.org/data/2.5/weather?q='
+      let token = '&appid=a3d9eb01d4de82b9b8d0849ef604dbed&'
+      let units = 'units=metric'
+      $.get(url + city + token + units, function(data) {
+        $("#outside-temperature").text(Math.round(data.main.temp));
+      });
+    }
 
     function updateTemperature() {
       $("#temperature").text(thermostat.currentTemperature)
