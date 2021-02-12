@@ -1,7 +1,7 @@
 $(document).ready( () => {
     let thermostat = new Thermostat();
     updateTemperature();
-    $("#powersave").text(thermostat.isPowerSaving);
+    // $("#powersave").text(thermostat.isPowerSaving);
 
 
     $('#increase_temp').click( () => {

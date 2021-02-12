@@ -6,35 +6,33 @@
 <body>
   <h1><span id="temperature"></span> ºC</h1>
   <section class="thermostat">
+    <div class=''>
+      Power saving is: <span id="powersave" >on</span>
+    </div>
 
     <div class="temperature">
       <div class='button'>
-        <button type="button" id="increase_temp">Increase Temperature</button>
-      </div>
-      <div class='button'>
-        <button type='button' id="decrease_temp">Decrease Temperature</button>
+        <button type="button" class="glow-on-hover" id="increase_temp">Increase Temperature</button>
+        <button type='button' class="glow-on-hover" id="decrease_temp">Decrease Temperature</button>
       </div>
 
     </div>
     <div class='powerSaving'>
-      <div class=''>
-        Power saving is:<span id="powersave" >on</span>
-      </div>
       <div class='button'>
-        <button type="button" id="power_save">Power Saving</button>
+        <button type="button" class="glow-on-hover" id="power_save">Power Saving</button>
       </div>
     </div>
 
     <div class="reset">
-      <button type="button" id="reset">Reset</button>
+      <button type="button" class="glow-on-hover" id="reset">Reset</button>
     </div>
 
     <div class="weather">
-      <h1>Current temperature: <span id="outside-temperature"></span> ºC</h1>
+      <h2>Current temperature: <span id="outside-temperature"></span> ºC</h2>
     </div>
 
     <form id="select-city">
-      <input type="text" id="city"/>
+      <input type="text" id="city"/></br>
       <button type="submit" value="submit">Submit</button>
     </form>
 
