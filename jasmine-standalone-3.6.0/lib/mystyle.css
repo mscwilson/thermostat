@@ -1,4 +1,20 @@
+body {
+  background-color: #f06
+}
 
+button {
+  color:#36f;
+  background-color: #ffff99;
+  border: none;
+  padding: 10px;
+}
+
+#select-city.submit-btn {
+  color:#36f;
+  background-color: #ffff99;
+  border: none;
+  padding: 10px;
+}
 
 .low {
   color: green;
