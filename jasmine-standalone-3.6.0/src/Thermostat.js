@@ -61,6 +61,9 @@ class Thermostat {
   }
 
   switchOnPowerSaving(){
+    if(this._currentTemperature > this.MAXIMUM_TEMPERATURE_PS) {
+      this._currentTemperature = this.MAXIMUM_TEMPERATURE_PS
+    }
     return this.powerSavingMode = true
   }
 

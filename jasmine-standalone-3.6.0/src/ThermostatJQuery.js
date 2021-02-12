@@ -1,15 +1,35 @@
 $(document).ready( () => {
     let thermostat = new Thermostat();
+    updateTemperature();
+    $("#powersave").text(thermostat.isPowerSaving);
 
-    $("#temperature").text(thermostat.currentTemperature)
 
     $('#increase_temp').click( () => {
         thermostat.increaseTemperature();
-        $("#temperature").text(thermostat.currentTemperature)
-    })
+        updateTemperature();
+      })
 
     $('#decrease_temp').click( () => {
       thermostat.decreaseTemperature();
-      $("#temperature").text(thermostat.currentTemperature)
+      updateTemperature();
     })
+
+    $('#reset').click( () => {
+      thermostat.reset();
+      updateTemperature();
+    })
+
+    $('#power_save').click( () => {
+      thermostat.powerSavingSwitch();
+      if(thermostat.isPowerSaving() === true){
+        $("#powersave").text("on");
+      } else {
+        $("#powersave").text("off");
+      }
+      updateTemperature()
+    })
+
+    function updateTemperature() {
+      $("#temperature").text(thermostat.currentTemperature)
+    }
 })
