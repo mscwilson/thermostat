@@ -1,11 +1,13 @@
 
 
-h1.clicked {
-  font-size: 4px;
-  color: blue;
+.low {
+  color: green;
 }
 
-body {
+.medium {
+  color: black;
+}
 
-  height: 200000px;
+.high {
+  color: red;
 }

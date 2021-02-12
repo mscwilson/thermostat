@@ -29,7 +29,9 @@ $(document).ready( () => {
       updateTemperature()
     })
 
+
     function updateTemperature() {
       $("#temperature").text(thermostat.currentTemperature)
+      $("#temperature").attr("class", thermostat.energyUsage());
     }
 })
