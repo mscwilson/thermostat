@@ -1,13 +1,15 @@
 $(document).ready( () => {
     let thermostat = new Thermostat();
 
+    $("#temperature").text(thermostat.currentTemperature)
+
     $('#increase_temp').click( () => {
         thermostat.increaseTemperature();
-        console.log(thermostat.currentTemperature);
+        $("#temperature").text(thermostat.currentTemperature)
     })
 
     $('#decrease_temp').click( () => {
       thermostat.decreaseTemperature();
-      console.log(thermostat.currentTemperature)
+      $("#temperature").text(thermostat.currentTemperature)
     })
 })
