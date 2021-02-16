@@ -1,51 +1,38 @@
 $(document).ready( () => {
     let thermostat = new Thermostat();
-    updateTemperature();
-    // $("#powersave").text(thermostat.isPowerSaving);
+    updateTemperatureDisplay()
+    updatePowerSavingDisplay()
 
 
     $('#increase_temp').click( () => {
         thermostat.increaseTemperature();
-        updateTemperature();
+        updateTemperatureDisplay()
       })
 
     $('#decrease_temp').click( () => {
       thermostat.decreaseTemperature();
-      updateTemperature();
+      updateTemperatureDisplay()
     })
 
-    $('#reset').click( () => {
-      thermostat.reset();
-      updateTemperature();
+    $("#power-save-switch").click( function() {
+      thermostat.powerSavingSwitch()
+      updatePowerSavingDisplay()
     })
 
-    $('#select-city').submit( () => {
-      event.preventDefault();
-      let city = $('#city').val();
-      updateCity(city);
-    })
 
-    $('#power_save').click( () => {
-      thermostat.powerSavingSwitch();
-      if(thermostat.isPowerSaving() === true){
-        $("#powersave").text("on");
-      } else {
-        $("#powersave").text("off");
-      }
-      updateTemperature()
-    })
+  function updateTemperatureDisplay() {
+    $("#current-temperature").text(thermostat.currentTemperature)
+  }
 
-    function updateCity(city) {
-      let url = 'http://api.openweathermap.org/data/2.5/weather?q='
-      let token = '&appid=a3d9eb01d4de82b9b8d0849ef604dbed&'
-      let units = 'units=metric'
-      $.get(url + city + token + units, function(data) {
-        $("#outside-temperature").text(Math.round(data.main.temp));
-      });
+  function updatePowerSavingDisplay() {
+    let value;
+    if (thermostat.isPowerSaving() === true) {
+      value = "on"
+    } else {
+      value = "off"
     }
+    $("#power-save-status").text(value)
+  }
 
-    function updateTemperature() {
-      $("#temperature").text(thermostat.currentTemperature)
-      $("#temperature").attr("class", thermostat.energyUsage());
-    }
 })
+

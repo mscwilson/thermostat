@@ -5,6 +5,7 @@ describe("Thermostat", function() {
 
   beforeEach(function() {
     thermostat = new Thermostat();
+    spyOn(window, "alert");
   });
 
   it("should return a default temperature of 20", function() {
@@ -64,6 +65,13 @@ describe("Thermostat", function() {
         thermostat.decreaseTemperature();
       }
       expect(thermostat.isMinimumTemperature()).toBe(true)
+    })
+
+    it("and alerts if minimum temp is reached", function () {
+      for (let i = 0; i < 11; i++){
+        thermostat.decreaseTemperature();
+      }
+      expect(window.alert).toHaveBeenCalled()
     })
   })
 

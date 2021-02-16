@@ -4,10 +4,10 @@
 
 </head>
 <body>
-  <h1><span id="temperature"></span> ºC</h1>
-  <section class="thermostat">
-    <div class=''>
-      Power saving is: <span id="powersave" >on</span>
+  <h1><span id="current-temperature"></span> ºC</h1>
+  <section class="thermostat-settings">
+    <div>
+      Power saving is: <span id="power-save-status" ></span>
     </div>
 
     <div class="temperature">
@@ -17,9 +17,10 @@
       </div>
 
     </div>
+
     <div class='powerSaving'>
       <div class='button'>
-        <button type="button" class="glow-on-hover" id="power_save">Power Saving</button>
+        <button type="button" class="glow-on-hover" id="power-save-switch">Power Saving</button>
       </div>
     </div>
 
@@ -29,17 +30,18 @@
 
     <div class="weather">
       <h2>Current temperature: <span id="outside-temperature"></span> ºC</h2>
-    </div>
 
-    <form id="select-city">
+
+    <form id="form-select-city">
       <input type="text" id="city"/></br>
       <button type="submit" value="submit">Submit</button>
     </form>
+    </div>
 
 
   </section>
 
-<script src="src/jQuery.js"></script>
+  <script src="src/jQuery.js"></script>
   <script src="src/Thermostat.js"></script>
   <script src="src/ThermostatJQuery.js"></script>
 

@@ -28,6 +28,7 @@ class Thermostat {
 
   decreaseTemperature() {
     if (this.isMinimumTemperature()) {
+      alert("Minimum temperature reached!");
       return;
     }
     this._currentTemperature -= 1
