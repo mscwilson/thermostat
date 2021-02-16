@@ -19,6 +19,17 @@ $(document).ready( () => {
       updatePowerSavingDisplay()
     })
 
+    $("#reset").click( () => {
+      thermostat.reset()
+      updateTemperatureDisplay()
+    })
+
+    $.get("http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=" + API_KEY, function(data) {
+      console.log(data)
+    })
+
+
+
 
   function updateTemperatureDisplay() {
     $("#current-temperature").text(thermostat.currentTemperature)
