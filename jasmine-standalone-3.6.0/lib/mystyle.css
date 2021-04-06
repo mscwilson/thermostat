@@ -1,6 +1,6 @@
 body {
   background-color: #fff0f0;
-  font-family:Arial;
+  font-family:verdana;
 }
 
 #temperature {
@@ -21,7 +21,7 @@ button {
   padding: 10px;
   margin: 5px;
   border-radius: 40px;
-  font-family:cursive;
+  font-family:verdana;
 }
 
 input[type="text"] {
@@ -41,6 +41,8 @@ input[type="text"] {
 }
 
 
+
+/*
 .glow-on-hover {
     height: 50px;
     border: none;
@@ -99,3 +101,4 @@ input[type="text"] {
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 }
+*/
