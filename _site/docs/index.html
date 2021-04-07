@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="lib/mystyle.css">
+    <title>Thermostat</title>
+</head>
+
+<body>
+    <h1><span id="current-temperature"></span> ºC</h1>
+    <section class="thermostat-settings">
+        <div>
+            Power saving is: <span id="power-save-status"></span>
+        </div>
+        <div class="temperature">
+            <div class='button'>
+                <button type="button" id="increase_temp">Increase Temperature</button>
+                <button type='button' id="decrease_temp">Decrease Temperature</button>
+            </div>
+        </div>
+        <div class='powerSaving'>
+            <div class='button'>
+                <button type="button" id="power-save-switch">Power Saving</button>
+            <button type="button" class="glow-on-hover" id="reset">Reset</button>
+            </div>
+
+        </div>
+        <div class="weather">
+            <h2>Current temperature in <span id="chosen-city">London</span>: <span id="outside-temperature"></span> ºC</h2>
+            <form id="form-select-city">
+                <input type="text" id="entered-city" placeholder="Enter a city to find out the temperature there" size=40/></br>
+                <button type="submit" value="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+    <script src="config.js"></script>
+    <script src="src/jQuery.js"></script>
+    <script src="src/Thermostat.js"></script>
+    <script src="src/ThermostatJQuery.js"></script>
+</body>
