@@ -1,0 +1,42 @@
+body {
+  background-color: #fff8f7;
+  font-family: verdana;
+  padding: 20px;
+  color: #382633;
+}
+
+#temperature {
+  font-size: 200px;
+}
+
+button {
+  border: none;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  font-family: verdana;
+  cursor: pointer;
+  background-color: #d3fac7;
+}
+
+button:hover {
+  background-color: #b4ebca;
+}
+
+input[type="text"] {
+  font-size: 20px;
+  padding: 5px;
+  size: 100px;
+}
+
+.low {
+  color: green;
+}
+
+.medium {
+  color: #382633;
+}
+
+.high {
+  color: red;
+}
