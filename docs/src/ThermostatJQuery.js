@@ -1,5 +1,3 @@
-import { API_KEY } from "../config.js";
-
 $(document).ready(() => {
   const thermostat = new Thermostat();
 
