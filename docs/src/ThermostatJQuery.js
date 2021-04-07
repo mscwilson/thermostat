@@ -1,6 +1,7 @@
+import { API_KEY } from "../config.js";
+
 $(document).ready(() => {
   const thermostat = new Thermostat();
-  const apiKey = API_KEY;
 
   updateTemperatureDisplay();
   updatePowerSavingDisplay();
@@ -37,7 +38,7 @@ $(document).ready(() => {
   function updateLocalTemperatureDisplay(city = "London") {
     const apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
     const apiCity = city;
-    const apiKeyDeclaration = `&APPID=${apiKey}`;
+    const apiKeyDeclaration = `&APPID=${API_KEY}`;
     const apiUnits = "&units=metric";
     $.get(
       `${apiUrl}${apiCity}${apiKeyDeclaration}${apiUnits}`,
