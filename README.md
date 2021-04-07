@@ -27,8 +27,9 @@ You can reset the temperature to 20 with a reset function
 You can ask about the thermostat's current energy usage: < 18 is low-usage, <= 25 is medium-usage, anything else is high-usage.
 ```
 
-We created a page to link HTML elements to the Thermostat functionality using jQuery.  
-To find the current temperature in London or another chosen city, we used the free [OpenWeather API](https://openweathermap.org/api).
+We wrote [these user stories](userStories.md) based on the specifications.
+
+For the interface, we were asked to create a page to link HTML elements to the Thermostat functionality using jQuery. To practise API calls, we then had to display the current temperature in London or another chosen city, using the free [OpenWeather API](https://openweathermap.org/api).
 
 The project is hosted with GitHub Pages and can be found [here](http://mscwilson.github.io/thermostat/). It looks like this:  
 ![default temperature and London result](/images/london.png)

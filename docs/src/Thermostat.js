@@ -18,6 +18,10 @@ class Thermostat {
   increaseTemperature () {
     if (this.isMaximumTemperature() === false) {
       this._currentTemperature += 1
+    } else if (this.isPowerSaving) {
+      alert(
+        'Maximum temperature reached!\nSwitch off Power Saving to set a higher temperature.'
+      )
     } else {
       alert('Maximum temperature reached!')
     }
