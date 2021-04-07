@@ -1,5 +1,6 @@
 $(document).ready(() => {
   const thermostat = new Thermostat()
+
   updateTemperatureDisplay()
   updatePowerSavingDisplay()
   updateLocalTemperatureDisplay()
@@ -35,7 +36,7 @@ $(document).ready(() => {
   function updateLocalTemperatureDisplay (city = 'London') {
     const apiUrl = 'http://api.openweathermap.org/data/2.5/weather?q='
     const apiCity = city
-    const apiKey = `&APPID=${API_KEY}`
+    const apiKey = '&APPID=0a22a30e8922d66f9f45e3aff77ad617'
     const apiUnits = '&units=metric'
     $.get(`${apiUrl}${apiCity}${apiKey}${apiUnits}`, function (data) {
       console.log(data.main.temp)
