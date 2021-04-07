@@ -1,68 +1,73 @@
 $(document).ready(() => {
-  const thermostat = new Thermostat()
-  updateTemperatureDisplay()
-  updatePowerSavingDisplay()
-  updateLocalTemperatureDisplay()
-  updateNamedCity()
+  const thermostat = new Thermostat();
+  const apiKey = API_KEY;
 
-  $('#increase_temp').click(() => {
-    thermostat.increaseTemperature()
-    updateTemperatureDisplay()
-  })
+  updateTemperatureDisplay();
+  updatePowerSavingDisplay();
+  updateLocalTemperatureDisplay();
+  updateNamedCity();
 
-  $('#decrease_temp').click(() => {
-    thermostat.decreaseTemperature()
-    updateTemperatureDisplay()
-  })
+  $("#increase_temp").click(() => {
+    thermostat.increaseTemperature();
+    updateTemperatureDisplay();
+  });
 
-  $('#power-save-switch').click(function () {
-    thermostat.powerSavingSwitch()
-    updatePowerSavingDisplay()
-    updateTemperatureDisplay()
-  })
+  $("#decrease_temp").click(() => {
+    thermostat.decreaseTemperature();
+    updateTemperatureDisplay();
+  });
 
-  $('#reset').click(() => {
-    thermostat.reset()
-    updateTemperatureDisplay()
-  })
+  $("#power-save-switch").click(function () {
+    thermostat.powerSavingSwitch();
+    updatePowerSavingDisplay();
+    updateTemperatureDisplay();
+  });
 
-  $('#form-select-city').submit((event) => {
-    event.preventDefault()
-    const city = $('#entered-city').val()
-    updateLocalTemperatureDisplay(city)
-  })
+  $("#reset").click(() => {
+    thermostat.reset();
+    updateTemperatureDisplay();
+  });
 
-  function updateLocalTemperatureDisplay (city = 'London') {
-    const apiUrl = 'http://api.openweathermap.org/data/2.5/weather?q='
-    const apiCity = city
-    const apiKey = `&APPID=${API_KEY}`
-    const apiUnits = '&units=metric'
-    $.get(`${apiUrl}${apiCity}${apiKey}${apiUnits}`, function (data) {
-      console.log(data.main.temp)
-      const result = data.main.temp
-      $('#outside-temperature').text(result)
-    })
-    updateNamedCity(city)
+  $("#form-select-city").submit((event) => {
+    event.preventDefault();
+    const city = $("#entered-city").val();
+    updateLocalTemperatureDisplay(city);
+  });
+
+  function updateLocalTemperatureDisplay(city = "London") {
+    const apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
+    const apiCity = city;
+    const apiKeyDeclaration = `&APPID=${apiKey}`;
+    const apiUnits = "&units=metric";
+    $.get(
+      `${apiUrl}${apiCity}${apiKeyDeclaration}${apiUnits}`,
+      function (data) {
+        console.log(data.main.temp);
+        const result = data.main.temp;
+        $("#outside-temperature").text(result);
+      }
+    );
+    updateNamedCity(city);
   }
 
-  function updateNamedCity (city = 'London') {
-    const cityCapitalised = city.charAt(0).toUpperCase() + city.slice(1)
-    $('#chosen-city').text(cityCapitalised)
+  function updateNamedCity(city = "London") {
+    const cityCapitalised = city.charAt(0).toUpperCase() + city.slice(1);
+    $("#chosen-city").text(cityCapitalised);
   }
 
-  function updateTemperatureDisplay () {
-    const temperature = $('#current-temperature')
-    temperature.text(thermostat.currentTemperature)
-    temperature.attr('class', thermostat.energyUsage())
+  function updateTemperatureDisplay() {
+    const temperature = $("#current-temperature");
+    temperature.text(thermostat.currentTemperature);
+    temperature.attr("class", thermostat.energyUsage());
   }
 
-  function updatePowerSavingDisplay () {
-    let value
+  function updatePowerSavingDisplay() {
+    let value;
     if (thermostat.isPowerSaving() === true) {
-      value = 'on'
+      value = "on";
     } else {
-      value = 'off'
+      value = "off";
     }
-    $('#power-save-status').text(value)
+    $("#power-save-status").text(value);
   }
-})
+});
