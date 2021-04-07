@@ -18,6 +18,7 @@ $(document).ready(() => {
   $('#power-save-switch').click(function () {
     thermostat.powerSavingSwitch()
     updatePowerSavingDisplay()
+    updateTemperatureDisplay()
   })
 
   $('#reset').click(() => {

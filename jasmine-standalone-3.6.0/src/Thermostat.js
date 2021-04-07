@@ -18,6 +18,8 @@ class Thermostat {
   increaseTemperature () {
     if (this.isMaximumTemperature() === false) {
       this._currentTemperature += 1
+    } else {
+      alert('Maximum temperature reached!')
     }
   }
 
